@@ -1,4 +1,4 @@
-package com.practice.spring.microservicedev.data.entity;
+package com.practice.spring.data.entity;
 
 
 import javax.persistence.*;

@@ -1,13 +1,11 @@
-package com.practice.spring.microservicedev;
+package com.practice.spring;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class MicroServiceDevApplication {
-
+public class Starter {
 	public static void main(String[] args) {
-		SpringApplication.run(MicroServiceDevApplication.class, args);
+		SpringApplication.run(Starter.class, args);
 	}
-
 }

@@ -1,6 +1,6 @@
-package com.practice.spring.microservicedev.data.repository;
+package com.practice.spring.data.repository;
 
-import com.practice.spring.microservicedev.data.entity.Room;
+import com.practice.spring.data.entity.Room;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
