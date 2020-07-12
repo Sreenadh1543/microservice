@@ -15,6 +15,6 @@ public class GuestController {
 
     @GetMapping
     public Iterable<Guest> getRooms() {
-        return this.guestRepository.findAll();
+        return guestRepository.findAll();
     }
 }
