@@ -5,7 +5,7 @@ import com.practice.spring.data.entity.Guest;
 import com.practice.spring.data.entity.Reservation;
 import com.practice.spring.data.entity.Room;
 import com.practice.spring.data.repository.GuestRepository;
-import com.practice.spring.data.repository.ReservationReposirtory;
+import com.practice.spring.data.repository.ReservationRepository;
 import com.practice.spring.data.repository.RoomRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,21 +16,21 @@ import java.util.*;
 public class ReservationService {
 
     private final GuestRepository guestRepository;
-    private final ReservationReposirtory reservationReposirtory;
+    private final ReservationRepository reservationRepository;
     private final RoomRepository roomRepository;
 
     @Autowired
     public ReservationService(GuestRepository guestRepository,
-                              ReservationReposirtory reservationReposirtory,
+                              ReservationRepository reservationRepository,
                               RoomRepository roomRepository) {
         this.guestRepository = guestRepository;
-        this.reservationReposirtory = reservationReposirtory;
+        this.reservationRepository = reservationRepository;
         this.roomRepository = roomRepository;
     }
 
     public List<RoomReservation> getRoomReservationsForDate(Date date) {
         Iterable<Room> rooms = roomRepository.findAll();
-        Map<Long, RoomReservation> roomReservationMap = new HashMap();
+        Map<Long, RoomReservation> roomReservationMap = new HashMap<Long, RoomReservation>();
         rooms.forEach(room -> {
             RoomReservation roomReservation = new RoomReservation();
             roomReservation.setRoomId(room.getRoomId());
@@ -38,7 +38,7 @@ public class ReservationService {
             roomReservation.setRoomNumber(room.getRoomNumber());
             roomReservationMap.put(room.getRoomId(), roomReservation);
         });
-        Iterable<Reservation> reservations = reservationReposirtory.
+        Iterable<Reservation> reservations = reservationRepository.
                 findReservationByReservationDate(new java.sql.Date(date.getTime()));
         reservations.forEach(reservation -> {
             RoomReservation roomReservation = roomReservationMap.get(reservation.getRoomId());

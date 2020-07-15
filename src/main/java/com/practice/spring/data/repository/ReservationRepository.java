@@ -7,8 +7,7 @@ import org.springframework.stereotype.Repository;
 import java.util.Date;
 
 @Repository
-public interface ReservationReposirtory extends CrudRepository<Reservation, Long> {
+public interface ReservationRepository extends CrudRepository<Reservation, Long> {
 
     Iterable<Reservation> findReservationByReservationDate(Date date);
-
 }
